@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="background_toolbar">#c92d42e1</color>
+    <color name="background_san_pham_moi_nhat">#5992d2</color>
+    <color name="text_san_pham_moi_nhat">#a71a04</color>
+
+    <color name="color_ten_san_pham">#fc0a65ba</color>
+    <color name="color_gia_san_pham">#ec0690</color>
+</resources>

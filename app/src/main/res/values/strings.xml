@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Buy Online</string>
+
+    <string name="text_ten_san_pham">Tên Sản Phẩm</string>
+    <string name="text_gia_san_pham">Giá Sản Phẩm</string>
+    <string name="text_mo_ta_san_pham">Mô Tả Sản Phẩm</string>
+
+    <string name="text_loai_san_pham">Loại Sản Phẩm</string>
+
+    <string name="title_toolbar_laptop">Laptop</string>
+</resources>
