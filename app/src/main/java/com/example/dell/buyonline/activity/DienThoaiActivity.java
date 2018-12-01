@@ -1,5 +1,6 @@
 package com.example.dell.buyonline.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -20,9 +23,11 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.dell.buyonline.R;
 import com.example.dell.buyonline.adapter.DienThoaiAdapter;
+import com.example.dell.buyonline.model.GioHang;
 import com.example.dell.buyonline.model.SanPham;
 import com.example.dell.buyonline.ultil.CheckConnection;
 import com.example.dell.buyonline.ultil.EndlessScrollListener;
+import com.example.dell.buyonline.ultil.OnItemClickListener;
 import com.example.dell.buyonline.ultil.Server;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,7 +44,8 @@ public class DienThoaiActivity extends AppCompatActivity {
     ArrayList<SanPham> mArrayDienThoai = new ArrayList<>();
     int idDienThoai = 0;
     private int mPage = 1;
-    EndlessScrollListener mScrollListener;
+    private EndlessScrollListener mScrollListener;
+    private OnItemClickListener mListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,13 +58,43 @@ public class DienThoaiActivity extends AppCompatActivity {
             actionToolBar();
             getData(mPage);
             getMoreData();
+
         } else {
             CheckConnection.showToast(getApplicationContext(), "Vui lòng kiểm tra kết nối!");
             finish();
         }
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menus, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menu_gio_hang:
+                // Nếu click vào icon giỏ hàng -> chuyển đến activity giỏ hàng
+                Intent intent =  new Intent(getApplicationContext(), GioHangActivity.class);
+                startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     private void getMoreData() {
+        // Xử lý click sang màn hình chi tiết
+        mDienThoaiAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Intent intent = new Intent(getApplicationContext(),ChiTietSanPham.class);
+                // Gửi từng đối tượng của mảng điện thoại ,
+                // sử dụng Seriable khai báo bên class Sản phẩm
+                intent.putExtra("thongtinsanpham", mArrayDienThoai.get(position));
+                startActivity(intent);
+            }
+        });
+
+        // Xử lý load nhiều sản phẩm hơn , 1 lần load 1 page
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(linearLayoutManager);
         // Retain an instance so that you can call `resetState()` for fresh searches
@@ -77,7 +113,6 @@ public class DienThoaiActivity extends AppCompatActivity {
         };
         // Adds the scroll listener to RecyclerView
         mRecyclerView.addOnScrollListener(mScrollListener);
-
     }
 
     private void actionToolBar() {

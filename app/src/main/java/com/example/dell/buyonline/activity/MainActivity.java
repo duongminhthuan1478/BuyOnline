@@ -10,6 +10,8 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -20,12 +22,16 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.dell.buyonline.CodeQR.CheckCodeQR;
+import com.example.dell.buyonline.Login.LoginActivity;
 import com.example.dell.buyonline.R;
 import com.example.dell.buyonline.adapter.LoaiSanPhamAdapter;
 import com.example.dell.buyonline.adapter.SanPhamAdapter;
+import com.example.dell.buyonline.model.GioHang;
 import com.example.dell.buyonline.model.LoaiSanPham;
 import com.example.dell.buyonline.model.SanPham;
 import com.example.dell.buyonline.ultil.CheckConnection;
+import com.example.dell.buyonline.ultil.OnItemClickListener;
 import com.example.dell.buyonline.ultil.Server;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
@@ -34,6 +40,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static ArrayList<GioHang> mArrayGioHang;
 
     private Toolbar mToolbar;
     private ViewFlipper mViewFlipper;
@@ -48,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
     private int mID;
     private String mTenLoaiSanPham = "";
     private String mHinhAnhLoaiSanPham = "";
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,8 +78,37 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menus, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
+        switch (item.getItemId()){
+            case R.id.menu_gio_hang:
+                // Nếu click vào icon giỏ hàng -> chuyển đến activity giỏ hàng
+                intent =  new Intent(getApplicationContext(), GioHangActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.menu_check_qr:
+                intent = new Intent(getApplicationContext(),CheckCodeQR.class);
+                startActivity(intent);
+                break;
+            case R.id.menu_login:
+                intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
     private void clickItemListener() {
-        mLoaispAdapter.setOnItemClickListener(new LoaiSanPhamAdapter.OnItemClickListener() {
+        //Xử lý cho thanh menu
+        mLoaispAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
                 switch (position) {
@@ -110,6 +150,16 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        // Xử lý cho click sản phẩm mới nhất
+        mSanPhamAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Intent intent = new Intent(getApplicationContext(), ChiTietSanPham.class);
+                intent.putExtra("thongtinsanpham", mArraySanPham.get(position));
+                startActivity(intent);
+            }
+        });
     }
 
     private void getDataSanPhamMoiNhat() {
@@ -148,6 +198,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
         requestQueue.add(jsonArrayRequest);
+
     }
 
     /**
@@ -197,13 +248,13 @@ public class MainActivity extends AppCompatActivity {
         // Mảng chứa link hình ảnh
         ArrayList<String> arrPromotion = new ArrayList<>();
         arrPromotion.add(
+                "https://fptshop.com.vn/Uploads/images/2015/Tin-Tuc/Dung/0418/conenmuanova3e"
+                        + "/nhung-tinh-nang-noi-bat-huawei-nova-3e-06.png");
+        arrPromotion.add(
                 "http://banhangmypham.vn/wp-content/uploads/2017/06/nen-chon-nguoi-mau-quang-cao"
                         + "-my-pham-theo-tieu-chi-nao-1.jpg");
-        arrPromotion.add(
-                "http://www.brandsvietnam.com/upload/forum2/2017/03/11813Oppo_1488816752.png");
         arrPromotion.add("http://img.news.zing.vn/img/330/t330036.jpg");
         arrPromotion.add("http://www.brandsvietnam.com/img/2012/aquafina.png");
-        arrPromotion.add("http://matic.com.vn/media/news/0807_phn.jpg");
 
         // Vì View Flipper chứa hình ảnh chứ không phải link nên dùng thư viện Picasso tải hình ảnh
         for (int i = 0; i < arrPromotion.size(); i++) {
@@ -262,5 +313,12 @@ public class MainActivity extends AppCompatActivity {
         mHomeRecyclerView.setHasFixedSize(true);
         mHomeRecyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
         mHomeRecyclerView.setAdapter(mSanPhamAdapter);
+
+
+        if(mArrayGioHang != null) {
+            // Nếu mảng có dữ liệu rồi thì không cần khởi tạo và cấp phát bộ nhớ
+        } else {
+            mArrayGioHang = new ArrayList<>();
+        }
     }
 }

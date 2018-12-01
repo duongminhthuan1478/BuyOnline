@@ -1,10 +1,12 @@
 package com.example.dell.buyonline.model;
 
+import java.io.Serializable;
+
 /**
  * Created by Dell on 07-Mar-18.
  */
 
-public class SanPham {
+public class SanPham implements Serializable{
     private int mID;
     private String mTenSanPham;
     private Integer mGiaSanPham;

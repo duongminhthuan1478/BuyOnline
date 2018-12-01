@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="10"
+    android:orientation="vertical"
+    tools:context=".activity.GioHangActivity"
+    >
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_gio_hang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_dark"
+        app:title="@string/title_toolbar_gio_hang"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_gravity="center"
+                android:id="@+id/text_thong_bao_gio_hang_rong"
+                android:textSize="@dimen/sp_25"
+                android:text="@string/text_gio_hang_rong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerview_gio_hang"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+        <LinearLayout
+            android:layout_marginTop="@dimen/dp_5"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_gravity="center"
+                android:textColor="@color/color_gia_san_pham"
+                android:text="@string/text_tong_tien"
+                android:layout_weight="1"
+                android:layout_width="@dimen/dp_0"
+                android:textSize="@dimen/sp_25"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/text_tong_gia_tien"
+                android:layout_gravity="center"
+                android:textColor="@color/color_gia_san_pham"
+                android:text="@string/text_gia_tien"
+                android:layout_width="@dimen/dp_0"
+                android:layout_weight="1"
+                android:textSize="@dimen/sp_25"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:textSize="@dimen/sp_20"
+        android:id="@+id/button_thanh_toan_gio_hang"
+        android:layout_weight="1"
+        android:text="@string/text_thanh_toan"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_0"/>
+    <Button
+        android:textSize="@dimen/sp_20"
+        android:id="@+id/button_tiep_tuc_mua_hang"
+        android:layout_weight="1"
+        android:text="@string/text_tiep_tuc_mua_hang"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_0"/>
+</LinearLayout>

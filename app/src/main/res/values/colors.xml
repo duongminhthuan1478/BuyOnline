@@ -10,4 +10,6 @@
 
     <color name="color_ten_san_pham">#fc0a65ba</color>
     <color name="color_gia_san_pham">#ec0690</color>
+
+    <color name="color_background_thong_tin_kh">#a3f7ff</color>
 </resources>

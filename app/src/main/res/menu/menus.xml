@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/menu_gio_hang"
+        android:icon="@drawable/ic_shopping_cart_white_24dp"
+        android:title="@string/title_toolbar_gio_hang"
+        app:showAsAction="always">
+    </item>
+
+    <item android:id="@+id/menu_check_qr"
+        android:title="@string/menu_check_qr"
+        app:showAsAction="never">
+    </item>
+    <item android:id="@+id/menu_login"
+        android:title="Login"
+        app:showAsAction="always">
+
+    </item>
+
+</menu>

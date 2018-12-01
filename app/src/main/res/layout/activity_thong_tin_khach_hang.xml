@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:layout_height="match_parent"
+    tools:context=".activity.ThongTinKhachHang"
+    android:orientation="vertical"
+    android:background="@color/color_background_thong_tin_kh">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/boder"
+        android:layout_marginRight="@dimen/dp_15"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginBottom="@dimen/dp_50"
+        android:layout_marginTop="@dimen/dp_50"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_margin="@dimen/dp_15"
+            android:textSize="@dimen/sp_30"
+            android:text="@string/text_thong_tin_khach_hang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_margin="@dimen/dp_5"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/edit_ten_khach_hang"
+                android:inputType="text"
+                android:hint="@string/text_ten_khach_hang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_margin="@dimen/dp_5"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/edit_sdt_khach_hang"
+                android:inputType="phone"
+                android:hint="@string/text_sdt_khach_hang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_margin="@dimen/dp_5"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/edit_email_khach_hang"
+                android:inputType="textEmailAddress"
+                android:hint="@string/text_email_khach_hang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_marginTop="@dimen/dp_15"
+            android:layout_marginBottom="@dimen/dp_15"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:background="@color/color_background_thong_tin_kh"
+                android:textColor="@color/color_gia_san_pham"
+                android:textSize="@dimen/sp_18"
+                android:padding="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_70"
+                android:id="@+id/button_xac_nhan"
+                android:layout_width="wrap_content"
+                android:text="@string/button_xac_nhan"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:background="@color/color_background_thong_tin_kh"
+                android:textColor="@color/color_gia_san_pham"
+                android:text="@string/button_tro_ve"
+                android:textSize="@dimen/sp_18"
+                android:padding="@dimen/dp_10"
+                android:id="@+id/button_tro_ve"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

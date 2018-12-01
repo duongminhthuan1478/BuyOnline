@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.dell.buyonline.R;
 import com.example.dell.buyonline.model.SanPham;
+import com.example.dell.buyonline.ultil.OnItemClickListener;
 import com.squareup.picasso.Picasso;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 public class LaptopAdapter extends RecyclerView.Adapter<LaptopAdapter.ViewHolder> {
     private Context mContext;
     private ArrayList<SanPham> mArrayLapTop = new ArrayList<>();
+    private OnItemClickListener mClickListener;
 
     public LaptopAdapter(Context context, ArrayList<SanPham> arrayLapTop) {
         mContext = context;
@@ -26,8 +28,8 @@ public class LaptopAdapter extends RecyclerView.Adapter<LaptopAdapter.ViewHolder
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_item_sanpham, parent, false);
-        return new ViewHolder(view);
+                .inflate(R.layout.san_pham_item, parent, false);
+        return new ViewHolder(view, mClickListener);
     }
 
     @Override
@@ -44,12 +46,25 @@ public class LaptopAdapter extends RecyclerView.Adapter<LaptopAdapter.ViewHolder
         private ImageView hinhAnhSanPham;
         private TextView textTenSanPham, textGiaSanPham, textMoTaSanPham;
 
-        public ViewHolder(View itemView) {
+        public ViewHolder(View itemView, final OnItemClickListener listener) {
             super(itemView);
             hinhAnhSanPham = itemView.findViewById(R.id.imageview_phone);
             textGiaSanPham = itemView.findViewById(R.id.text_gia_phone);
             textTenSanPham = itemView.findViewById(R.id.text_name_phone);
             textMoTaSanPham = itemView.findViewById(R.id.text_mo_ta_phone);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null) {
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION) {
+                            listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
+
         }
         public void setData(int position) {
             SanPham sanPham = mArrayLapTop.get(position);
@@ -66,5 +81,8 @@ public class LaptopAdapter extends RecyclerView.Adapter<LaptopAdapter.ViewHolder
                     .error(R.drawable.no_image)
                     .into(hinhAnhSanPham);
         }
+    }
+    public void setOnItemClickListener(OnItemClickListener listener ){
+        mClickListener = listener;
     }
 }

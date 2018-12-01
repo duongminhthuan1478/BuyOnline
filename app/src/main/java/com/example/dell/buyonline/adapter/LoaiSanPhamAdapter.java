@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.dell.buyonline.R;
 import com.example.dell.buyonline.model.LoaiSanPham;
+import com.example.dell.buyonline.ultil.OnItemClickListener;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
@@ -21,10 +22,6 @@ public class LoaiSanPhamAdapter extends RecyclerView.Adapter<LoaiSanPhamAdapter.
     private ArrayList<LoaiSanPham> mArrayLoaiSp = new ArrayList<>();
     private Context mContext;
     private OnItemClickListener mListener;
-
-    public interface OnItemClickListener {
-        void onItemClick(int position);
-    }
 
 
     public LoaiSanPhamAdapter(Context context, ArrayList<LoaiSanPham> arrayLoaiSp) {

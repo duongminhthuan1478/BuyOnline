@@ -10,7 +10,7 @@ package com.example.dell.buyonline.ultil;
 public class Server {
 
     public static String MY_WEBSITE = "https://thuanduong.000webhostapp.com";
-    public static String LOCAL_HOST = "192.168.1.102";
+    public static String LOCAL_HOST = "192.168.1.103";
 //    public static String LINK_TYPE_PRODUCT = "http://" + LOCAL_HOST + "/server/getloaisanpham.php";
 //    public static String LINK_ITEM_NEW = "http://" + LOCAL_HOST + "/server/getsanphammoinhat.php";
 //    public static String LINK_DIEN_THOAI= "http://" + LOCAL_HOST + "/server/getsanpham.php?page=";
@@ -18,4 +18,6 @@ public class Server {
     public static String LINK_TYPE_PRODUCT = MY_WEBSITE + "/server/getloaisanpham.php";
     public static String LINK_ITEM_NEW = MY_WEBSITE + "/server/getsanphammoinhat.php";
     public static String LINK_DIEN_THOAI= MY_WEBSITE + "/server/getsanpham.php?page=";
+    public static String LINK_DON_HANG = MY_WEBSITE + "/server/thongtinkhachhang.php";
+    public static String LINK_CHI_TIET_DON_HANG = MY_WEBSITE + "/server/chitietdonhang.php";
 }

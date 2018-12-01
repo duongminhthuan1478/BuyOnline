@@ -9,8 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.dell.buyonline.R;
 import com.example.dell.buyonline.model.SanPham;
+import com.example.dell.buyonline.ultil.OnItemClickListener;
 import com.squareup.picasso.Picasso;
-import java.lang.reflect.Array;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -21,19 +21,19 @@ import java.util.ArrayList;
 public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHolder>{
 
     private Context mContext;
+    private ArrayList<SanPham> mArraySanPham = new ArrayList<>();
+    private OnItemClickListener mClickListener;
 
     public SanPhamAdapter(Context context, ArrayList<SanPham> arraySanPham) {
         mContext = context;
         mArraySanPham = arraySanPham;
     }
 
-    private ArrayList<SanPham> mArraySanPham = new ArrayList<>();
-
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.san_pham_moi_nhat_recyclerview,parent, false);
-        return new ViewHolder(view);
+                .inflate(R.layout.san_pham_moi_nhat_item,parent, false);
+        return new ViewHolder(view, mClickListener);
     }
 
     @Override
@@ -52,11 +52,24 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView hinhAnhSanPham;
         private TextView textTenSanPham, textGiaSanPham;
-        public ViewHolder(View itemView) {
+
+        public ViewHolder(View itemView, final OnItemClickListener listener) {
             super(itemView);
             hinhAnhSanPham = itemView.findViewById(R.id.imageview_san_pham);
             textGiaSanPham = itemView.findViewById(R.id.text_gia_sp);
             textTenSanPham = itemView.findViewById(R.id.text_ten_sp);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listener != null){
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION){
+                            listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
         public void setData(int position) {
             SanPham sanPham = mArraySanPham.get(position);
@@ -68,5 +81,8 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
                     .error(R.drawable.no_image)
                     .into(hinhAnhSanPham);
         }
+    }
+    public void setOnItemClickListener(OnItemClickListener listener){
+        mClickListener = listener;
     }
 }

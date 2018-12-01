@@ -4,8 +4,47 @@
     <string name="text_ten_san_pham">Tên Sản Phẩm</string>
     <string name="text_gia_san_pham">Giá Sản Phẩm</string>
     <string name="text_mo_ta_san_pham">Mô Tả Sản Phẩm</string>
+    <string name="text_mo_ta_san_pham_chi_tiet">Mô Tả Chi Tiết Sản Phẩm</string>
 
     <string name="text_loai_san_pham">Loại Sản Phẩm</string>
+    <string name="text_them_gio_hang">THÊM GIỎ HÀNG</string>
+    <string name="text_gio_hang_rong">Chưa có sản phẩm nào</string>
+    <string name="text_tong_tien">Tổng Tiền : </string>
+    <string name="text_gia_tien">Giá Tiền</string>
+    <string name="text_thanh_toan">THANH TOÁN</string>
+    <string name="text_tiep_tuc_mua_hang">TIẾP TỤC MUA HÀNG</string>
 
     <string name="title_toolbar_laptop">Laptop</string>
+    <string name="title_toolbar_gio_hang">Giỏ Hàng</string>
+    <string name="title_toolbar_chi_tiet">Chi Tiết Sản Phẩm</string>
+    <string name="title_activity_chi_tiet_san_pham">ChiTietSanPham</string>
+
+    <string name="button_minus">-</string>
+    <string name="button_add">+</string>
+    <string name="button_value">1</string>
+    <string name="button_xac_nhan">XÁC NHẬN</string>
+    <string name="button_tro_ve">TRỞ VỀ</string>
+
+    <string name="infor_qr"></string>
+    <string name="menu_check_qr">Mã QR</string>
+    <string name="button_scan">SCAN</string>
+
+    <string name="text_thong_tin_khach_hang">Thông Tin Khách Hàng</string>
+    <string name="text_ten_khach_hang">Tên khách hàng</string>
+    <string name="text_sdt_khach_hang">Nhập số điện thoại</string>
+    <string name="text_email_khach_hang">Nhập địa chỉ email của bạn</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
 </resources>

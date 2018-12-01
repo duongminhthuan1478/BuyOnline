@@ -49,7 +49,7 @@ public class PhoneAdapter extends BaseAdapter {
         if(view == null) {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.list_item_sanpham, null);
+            view = inflater.inflate(R.layout.san_pham_item, null);
             viewHolder.textTenSanPham = (TextView) view.findViewById(R.id.text_name_phone);
             viewHolder.textGiaSanPham = (TextView) view.findViewById(R.id.text_gia_phone);
             viewHolder.textMoTaSanPham = (TextView) view.findViewById(R.id.text_mo_ta_phone);
